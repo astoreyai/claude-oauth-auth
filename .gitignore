@@ -150,6 +150,8 @@ tokens.json
 *.token
 credentials.json
 .credentials/
+*.env*
+!.env.example
 
 # Test artifacts
 .testmondata

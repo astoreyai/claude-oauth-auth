@@ -7,7 +7,7 @@ name = "claude-oauth-auth"
 version = "0.1.0"
 description = "OAuth 2.0 authentication manager for Anthropic Claude API with unified credential discovery"
 authors = [
-    {name = "AI Scientist Project Contributors"}
+    {name = "Claude OAuth Auth Contributors"}
 ]
 license = {text = "MIT"}
 readme = "README.md"
