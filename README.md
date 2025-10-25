@@ -13,16 +13,17 @@
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](.github/CODE_OF_CONDUCT.md)
 
-A Python package for handling OAuth authentication with Claude API, providing secure token management and authentication workflows.
+OAuth 2.0 authentication manager for Anthropic Claude API with unified credential discovery and automatic token management.
 
 ## Features
 
-- **Complete OAuth 2.0 Implementation**: Full support for OAuth authorization code flow
-- **PKCE Support**: Enhanced security with Proof Key for Code Exchange (RFC 7636)
-- **Automatic Token Management**: Handles token refresh and expiration automatically
+- **Automatic Credential Discovery**: Finds OAuth tokens from Claude Code or API keys from environment
+- **OAuth 2.0 Token Management**: Automatic token refresh and expiration handling
+- **Unified Authentication**: Single interface for both OAuth and API key authentication
+- **Zero Configuration**: Works out-of-the-box with Claude Code installations
 - **Secure Token Storage**: Safe persistence of authentication credentials
-- **Simple High-Level API**: Easy-to-use client interface for common workflows
 - **Type Hints**: Full type annotation support for better IDE integration
+- **Comprehensive Diagnostics**: Built-in tools for troubleshooting authentication issues
 
 ## Installation
 
@@ -33,27 +34,35 @@ pip install claude-oauth-auth
 ## Quick Start
 
 ```python
-from claude_oauth_auth import ClaudeOAuthClient
+from claude_oauth_auth import ClaudeClient
 
-# Initialize the client with your OAuth credentials
-client = ClaudeOAuthClient(
-    client_id="your_client_id",
-    client_secret="your_client_secret",  # Optional for PKCE
-    redirect_uri="http://localhost:8080/callback",
-    token_file="~/.claude/tokens.json"  # Optional: persist tokens
+# Initialize the client (automatically discovers credentials)
+client = ClaudeClient()
+
+# Use the client for API requests
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "Hello, Claude!"}]
 )
 
-# Authenticate with Claude API
-if client.authenticate():
-    print("Successfully authenticated!")
+print(response.content[0].text)
+```
 
-    # Get a valid access token
-    token = client.get_access_token()
+### With API Key
 
-    # Use the token for API requests
-    # ...
-else:
-    print("Authentication failed")
+```python
+from claude_oauth_auth import ClaudeClient
+
+# Initialize with explicit API key
+client = ClaudeClient(api_key="your_api_key_here")
+
+# Use the client
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "Hello!"}]
+)
 ```
 
 ## Advanced Usage
@@ -61,31 +70,31 @@ else:
 ### Using Individual Components
 
 ```python
-from claude_oauth_auth import OAuthManager, AuthManager
+from claude_oauth_auth import OAuthTokenManager, UnifiedAuthManager
 
-# Low-level OAuth operations
-oauth_manager = OAuthManager(
-    client_id="your_client_id",
-    client_secret="your_client_secret",
-    redirect_uri="http://localhost:8080/callback"
+# OAuth token management
+oauth_manager = OAuthTokenManager(
+    refresh_token="your_refresh_token",
+    access_token="your_access_token",
+    token_file="~/.claude/tokens.json"
 )
 
-# Get authorization URL
-auth_url = oauth_manager.get_authorization_url()
-print(f"Visit: {auth_url}")
+# Get a valid token (auto-refreshes if needed)
+token = oauth_manager.get_valid_token()
 
-# Exchange code for token (after user authorization)
-tokens = oauth_manager.exchange_code_for_token(code)
+# Check token status
+if oauth_manager.is_token_valid():
+    expiry = oauth_manager.get_token_expiration()
+    print(f"Token valid until: {expiry}")
 
-# Token management
-auth_manager = AuthManager(
-    token_file="~/.claude/tokens.json",
-    oauth_manager=oauth_manager
-)
+# Unified authentication manager
+auth_manager = UnifiedAuthManager()
 
-# Save and load tokens
-auth_manager.save_tokens(tokens)
-valid_token = auth_manager.get_valid_token()
+# Check authentication method
+print(f"Using {auth_manager.auth_method} authentication")
+
+# Get credentials
+credentials = auth_manager.get_credentials()
 ```
 
 ## Requirements
@@ -99,7 +108,7 @@ valid_token = auth_manager.get_valid_token()
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/claude-oauth-auth.git
+git clone https://github.com/astoreyai/claude-oauth-auth.git
 cd claude-oauth-auth
 
 # Create virtual environment
@@ -134,12 +143,19 @@ pytest -v
 
 ## Documentation
 
-Full documentation is available at [https://claude-oauth-auth.readthedocs.io/](https://claude-oauth-auth.readthedocs.io/)
+Comprehensive documentation is available in the `docs/` directory:
 
-- [Installation Guide](docs/installation.md)
-- [Authentication Flow](docs/authentication.md)
-- [API Reference](docs/api.md)
-- [Examples](docs/examples.md)
+- **[Installation Guide](docs/installation.md)** - Complete installation instructions
+- **[Quick Start](docs/quickstart.md)** - Get started in 5 minutes
+- **[Authentication Flow](docs/authentication.md)** - OAuth and API key authentication
+- **[User Guide](docs/guide.md)** - Complete usage guide
+- **[API Reference](docs/api.md)** - Detailed API documentation
+- **[Examples](docs/examples.md)** - Real-world code examples
+- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
+- **[FAQ](docs/faq.md)** - Frequently asked questions
+- **[Tutorial](docs/tutorial.md)** - Step-by-step beginner guide
+- **[Advanced Guide](docs/advanced.md)** - Advanced usage patterns
+- **[Architecture](docs/architecture.md)** - System design and internals
 
 ## Project Structure
 
