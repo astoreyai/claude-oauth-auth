@@ -1,0 +1,10 @@
+# CLI Tool with Claude OAuth Integration
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+click>=8.1.0
+rich>=13.0.0
+claude-oauth-auth>=0.1.0
+
+# Optional: For better terminal experience
+prompt-toolkit>=3.0.0

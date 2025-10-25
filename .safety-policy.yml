@@ -1,0 +1,31 @@
+# Safety Security Policy Configuration
+# https://docs.pyup.io/docs/safety-20-policy-file
+
+# Security check configuration for dependency vulnerabilities
+
+security:
+  # Ignore CVSS severity below this level (0-10 scale)
+  # 0.0 = none, 4.0 = low, 7.0 = medium, 9.0 = high, 10.0 = critical
+  ignore-cvss-severity-below: 0.0
+
+  # How to handle unknown severity vulnerabilities
+  ignore-cvss-unknown-severity: false
+
+  # Ignore specific vulnerabilities (use sparingly and document why)
+  ignore-vulnerabilities:
+    # Example: Ignore specific CVEs with justification
+    # - id: 12345
+    #   reason: "False positive - not applicable to our use case"
+    #   expires: "2025-12-31"
+
+  # Continue checking even after finding issues (don't stop at first)
+  continue-on-vulnerability-error: false
+
+  # Ignore unpinned requirements
+  ignore-unpinned-requirements: false
+
+# Additional metadata
+metadata:
+  project: claude-oauth-auth
+  description: "OAuth 2.0 authentication manager for Claude API"
+  maintained-by: "AI Scientist Project Contributors"

@@ -1,0 +1,53 @@
+# Include documentation files
+include README.md
+include LICENSE
+include CHANGELOG.md
+
+# Include configuration files
+include pyproject.toml
+include setup.py
+include setup.cfg
+
+# Include documentation
+recursive-include docs *.md
+recursive-include docs *.rst
+recursive-include docs *.txt
+
+# Include tests (optional, for sdist)
+recursive-include tests *.py
+
+# Include type stubs
+recursive-include src *.pyi
+recursive-include src py.typed
+
+# Exclude compiled files
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude .DS_Store
+
+# Exclude version control
+global-exclude .git*
+global-exclude .hg*
+
+# Exclude IDE files
+global-exclude .vscode
+global-exclude .idea
+global-exclude *.swp
+global-exclude *.swo
+
+# Exclude build artifacts
+global-exclude *.egg-info
+global-exclude .eggs
+global-exclude build
+global-exclude dist
+
+# Exclude environment files
+global-exclude .env
+global-exclude .venv
+global-exclude venv
+
+# Exclude credentials and tokens
+global-exclude *.token
+global-exclude tokens.json
+global-exclude credentials.json

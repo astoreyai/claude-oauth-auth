@@ -1,0 +1,42 @@
+# Bandit Security Scanner Configuration
+# https://bandit.readthedocs.io/en/latest/config.html
+
+[bandit]
+# Exclude directories from scanning
+exclude_dirs = [
+    "/tests",
+    "/.venv",
+    "/.tox",
+    "/build",
+    "/dist",
+    "/.pytest_cache",
+    "/.mypy_cache",
+    "/.ruff_cache",
+    "/htmlcov",
+    "/site-packages"
+]
+
+# Tests to skip globally
+skips = [
+    "B101"  # assert_used - handled per-file
+]
+
+# Severity level (low, medium, high)
+# Only report issues of medium severity or higher
+severity = "medium"
+
+# Confidence level (low, medium, high)
+# Only report issues with medium confidence or higher
+confidence = "medium"
+
+[bandit.assert_used]
+# Skip assert checks in test files
+skips = ["*/tests/*", "*_test.py", "test_*.py"]
+
+[bandit.hardcoded_password_string]
+# Reduce false positives for password-related variables
+exclude_regex = "test_.*|.*_test|mock_.*|.*_mock|dummy_.*|.*_dummy|example_.*|.*_example"
+
+[bandit.hardcoded_tmp_directory]
+# Allow /tmp in test files
+skips = ["*/tests/*"]

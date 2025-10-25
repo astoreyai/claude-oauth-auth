@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  claude-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: claude-oauth-demo
+    ports:
+      - "8000:8000"
+    environment:
+      # Authentication - use one of these methods:
+      # Option 1: API Key (uncomment and set)
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+
+      # Option 2: OAuth Token (uncomment and set)
+      # - ANTHROPIC_AUTH_TOKEN=${ANTHROPIC_AUTH_TOKEN}
+
+      # Application settings
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - API_RELOAD=False
+
+    # Optional: Mount credentials file for Claude Code OAuth
+    # volumes:
+    #   - ~/.claude/.credentials.json:/root/.claude/.credentials.json:ro
+
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '1'
+          memory: 512M
+
+    # Restart policy
+    restart: unless-stopped
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # Networks
+    networks:
+      - claude-network
+
+networks:
+  claude-network:
+    driver: bridge

@@ -1,0 +1,11 @@
+# Testing Integration with Claude OAuth Auth
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+claude-oauth-auth>=0.1.0
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.12.0
+
+# Optional: For async testing
+pytest-asyncio>=0.21.0

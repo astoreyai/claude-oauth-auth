@@ -1,0 +1,30 @@
+# Auto-labeler configuration for pull requests
+# Labels are applied based on changed file paths
+
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: ['docs/**/*', '*.md', '**/*.md']
+
+tests:
+  - changed-files:
+    - any-glob-to-any-file: ['tests/**/*', 'test_*.py', '**/test_*.py']
+
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file: ['requirements.txt', 'pyproject.toml', 'setup.py', 'setup.cfg']
+
+ci/cd:
+  - changed-files:
+    - any-glob-to-any-file: ['.github/**/*', 'tox.ini', '.gitlab-ci.yml']
+
+oauth:
+  - changed-files:
+    - any-glob-to-any-file: ['**/oauth_manager.py', '**/oauth*.py']
+
+authentication:
+  - changed-files:
+    - any-glob-to-any-file: ['**/auth_manager.py', '**/auth*.py']
+
+client:
+  - changed-files:
+    - any-glob-to-any-file: ['**/client.py']

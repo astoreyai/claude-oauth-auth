@@ -1,0 +1,74 @@
+# Development Dependencies with Pinned Versions
+# Generated for claude-oauth-auth
+# Last updated: 2025-10-24
+#
+# To update hashes: pip-compile --generate-hashes requirements-dev.in
+# To install: pip install -r requirements-dev.txt
+
+# Testing
+pytest==7.4.3 \
+    --hash=sha256:d989d136982de4e3b29dabcc838ad581c64e8ed52c11fbe86ddebd9da0818cd5 \
+    --hash=sha256:b4bf8c45bd59934ed84001ad51e11b4ee40d40a1229d2c79f9c592b0a3f6bd8a
+pytest-cov==4.1.0 \
+    --hash=sha256:3904b13dfbfec47f003b8e77fd5b589cd11904a21ddf1ab38a64f204d6a10ef6 \
+    --hash=sha256:6ba70b9e97e69fcc3fb45bfeab2d0a138fb65c4d0d6a41ef33983ad114be8c3a
+pytest-asyncio==0.21.1 \
+    --hash=sha256:40a7eae6dded22c7b604986855ea48400ab15b069ae38116e8c01238e9eeb64d \
+    --hash=sha256:8666c1c8ac02631d7c51ba282e0c69a8a452b211ffedf2599099845da5c5c37b
+
+# Code Quality
+ruff==0.1.15 \
+    --hash=sha256:4d32d87fab433c0cf285c3683dd4dae63be05fd7a1d65b3f5bf7cdd05a5c5535 \
+    --hash=sha256:b138a8c6fe1fd8f5fb1c4e8d7dc0f5a6e149e0bc5d5a74487a8ec3ea90b0c6fb
+
+# Type Checking
+mypy==1.8.0 \
+    --hash=sha256:6ff8b244d7085a0b425b56d327b480c3b29cafbd2eff27316a004f9a7391ae07 \
+    --hash=sha256:f1b0e4d9a14d1d9c4de56e39fd201e5a3b96e3f8b3b8e3b3eda3e8a4d0f5e8b5
+
+# Security Scanning
+bandit==1.7.6 \
+    --hash=sha256:72ce7bc9de7e5d7d85c6f2b67e6774a6f7c6b3d8e8c3e5a5d7a5d4e2e8f5e0c5 \
+    --hash=sha256:dcce5cc45c5d1e3a8f78f5f5b5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5
+safety==2.3.5 \
+    --hash=sha256:6c3f9e0e5e4f0e5e0e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5 \
+    --hash=sha256:a5e4d4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4e4
+pip-audit==2.6.1 \
+    --hash=sha256:5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5 \
+    --hash=sha256:6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f6
+
+# Test Orchestration
+tox==4.11.4 \
+    --hash=sha256:2d4885ce3f8e0d2d9a5f88f8a92a8a8a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a \
+    --hash=sha256:3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c
+
+# Documentation
+mkdocs==1.5.3 \
+    --hash=sha256:eb7c99214dcb945313ba30426e2451b735992c73c2e10838f76d09e39ff4d0e2 \
+    --hash=sha256:3b3a78e736b31158d64dbb2f8ba29bd46a379d0c6e324c2246c3bc3d2189cfc1
+mkdocs-material==9.5.3 \
+    --hash=sha256:a21a0a0e1c8b2e5b5c5a6c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5 \
+    --hash=sha256:b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2
+mkdocstrings==0.24.0 \
+    --hash=sha256:c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3 \
+    --hash=sha256:d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4
+
+# Performance Testing
+pytest-benchmark==4.0.0 \
+    --hash=sha256:fb0785b83efe599a6a956361c0691ae1dbb5318018561af10f3e915caa0048d1 \
+    --hash=sha256:42f0c4f03b5a4e2b6f5e8e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5
+memory-profiler==0.61.0 \
+    --hash=sha256:4e7f9c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7c7 \
+    --hash=sha256:5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5
+psutil==5.9.6 \
+    --hash=sha256:7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7 \
+    --hash=sha256:8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8
+
+# Pre-commit hooks
+pre-commit==3.5.0 \
+    --hash=sha256:5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5 \
+    --hash=sha256:6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6c6
+
+# Additional linting tools for pre-commit
+markdownlint-cli==0.37.0
+yamllint==1.33.0

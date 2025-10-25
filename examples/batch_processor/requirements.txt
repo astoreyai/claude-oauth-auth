@@ -1,0 +1,9 @@
+# Batch Processor with Claude OAuth Integration
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+claude-oauth-auth>=0.1.0
+tqdm>=4.66.0
+
+# Optional: For better performance
+pandas>=2.0.0  # For CSV handling

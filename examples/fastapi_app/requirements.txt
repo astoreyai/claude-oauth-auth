@@ -1,0 +1,15 @@
+# FastAPI Application with Claude OAuth Integration
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.0.0
+claude-oauth-auth>=0.1.0
+
+# WebSocket support (included in uvicorn[standard])
+websockets>=12.0
+
+# Optional: Development tools
+python-dotenv>=1.0.0
+httpx>=0.26.0  # For testing async endpoints
